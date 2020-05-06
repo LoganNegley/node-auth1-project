@@ -14,6 +14,6 @@ exports.up = function(knex) {
 };
 
 exports.down = function(knex) {
-  retrun knex.schema
+  return knex.schema
   .dropTableIfExist('user')
 };
