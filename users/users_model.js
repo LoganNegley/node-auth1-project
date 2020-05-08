@@ -4,8 +4,9 @@ function find(){
 
 };
 
-function findBy(filter){
-
+function findBy(user_name){
+    return db('user')
+    .where(user.userName === user_name)
 };
 
 function add(user){
