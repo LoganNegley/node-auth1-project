@@ -40,9 +40,9 @@ router.post('/login', (req,res) =>{
 router.delete('/logout', (req,res) =>{
     req.session.destroy((error) =>{
         if(error){
-            res.send('unable to logout')
+            res.json('unable to logout')
         }else{
-            res.send('logged out')
+            res.json('logged out')
         }
     })
 })
