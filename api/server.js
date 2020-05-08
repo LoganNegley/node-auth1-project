@@ -19,10 +19,14 @@ saveUnitialized: false,
 
 };
 
+//Global Middleware
 server.use(express.json());
+server.use(session(sessionConfig));
+
+// Routes
 server.use('/api/users', usersRouter);
 server.use('/api/auth', authRouter);
-server.use(session(sessionConfig));
+
 
 server.get('/', (req, res) =>{
     res.json({
