@@ -15,7 +15,7 @@ router.post('/register', (req,res) =>{//create new user
         })
         .catch(error =>{
             console.log(error)
-            res.status(500).json({errorMessage:'unable to create a new user'})
+            res.status(500).json({errorMessage:'Error with database'})
         })
 });
 
@@ -23,15 +23,16 @@ router.post('/login', (req,res) =>{
     const {userName, password} = req.body
 
     db.findBy({userName})
-    .then(([user]) =>{
-        if(user && bcrypt.compareSync(password, user.password)){
+    .then(([user]) =>{//destructuring array [user] with give me an object of the first one and should only be one
+        if(user && bcrypt.compareSync(password, user.password)){//comparing what user puts as password and hash in db
             res.status(200).json({message: 'Welcome'})
         }else{
             res.status(401).json({message: 'invalid creds'})
         }
     })
     .catch(error =>{
-        res.status(500).json({errorMessage: 'Unable to get user information'})
+        console.log(error)
+        res.status(500).json({errorMessage: 'Error with database'})
     })
 });
 

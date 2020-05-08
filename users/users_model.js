@@ -1,12 +1,12 @@
 const db = require('../data/db.config');
 
 function find(){
-
+return db('user')
 };
 
-function findBy(user_name){
+function findBy(userName){
     return db('user')
-    .where(user.userName === user_name)
+    .where(userName)
 };
 
 function add(user){
