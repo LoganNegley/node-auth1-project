@@ -15,7 +15,7 @@ cookie:{
     httpOnly: true,
 },
 resave: false,
-saveUnitialized: false,
+saveUninitialized: false,
 
 };
 
