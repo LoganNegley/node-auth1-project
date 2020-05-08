@@ -25,6 +25,7 @@ router.post('/login', (req,res) =>{
     db.findBy({userName})
     .then(([user]) =>{//destructuring array [user] with give me an object of the first one and should only be one
         if(user && bcrypt.compareSync(password, user.password)){//comparing what user puts as password and hash in db
+            req.session.user = userName;
             res.status(200).json({message: 'Welcome'})
         }else{
             res.status(401).json({message: 'invalid creds'})
